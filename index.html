@@ -15,7 +15,7 @@
   button{font-family:inherit;cursor:pointer;color:inherit}
   svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
   .wrap{width:min(1100px,100%);margin-inline:auto;padding-inline:16px}
-
+ 
   /* header */
   header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .hd{display:flex;align-items:center;gap:12px;padding-block:12px}
@@ -30,7 +30,7 @@
   .locbtn .pin{color:var(--yel)}
   .post{background:var(--red);color:#fff;box-shadow:0 8px 22px rgba(200,16,46,.28);border:0;border-radius:12px;padding:10px 16px;font-weight:900;font-size:14px;white-space:nowrap}
   .post:hover{filter:brightness(1.05)}
-
+ 
   /* search */
   .sbar{display:flex;gap:8px;margin-top:18px}
   .sbox{flex:1;min-width:0;display:flex;align-items:center;gap:10px;background:var(--sur);border:1px solid var(--line);border-radius:14px;padding:0 14px}
@@ -43,7 +43,7 @@
   .cats::-webkit-scrollbar{display:none}
   .cat{flex:none;border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 16px;font-size:14px;color:var(--mut)}
   .cat.on{background:var(--red);border-color:transparent;color:#fff;font-weight:700}
-
+ 
   /* selected neighborhood banner */
   .hb{display:none;margin-top:14px;border-radius:18px;padding:16px 18px;position:relative;overflow:hidden;align-items:center;gap:14px}
   .hb.on{display:flex}
@@ -53,7 +53,7 @@
   .hb .tags{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
   .hb .tags span{background:rgba(0,0,0,.25);border-radius:8px;padding:1px 9px;font-size:12px}
   .hb .clr{margin-inline-start:auto;align-self:flex-start;background:rgba(0,0,0,.3);border:0;border-radius:10px;padding:5px 10px;font-size:13px;color:#fff;white-space:nowrap}
-
+ 
   /* list */
   .head{display:flex;justify-content:space-between;align-items:center;margin:18px 0 10px}
   .head h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px}
@@ -74,7 +74,7 @@
   .ad .m{font-size:13px;color:var(--mut);margin-top:2px}
   .ad .pr{margin-top:auto;font-weight:900;font-size:15px;color:#c8102e}
   .empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:50px 0}
-
+ 
   /* neighborhood picker */
   .pk{position:fixed;inset:0;z-index:40;display:none}
   .pk.on{display:block}
@@ -110,7 +110,7 @@
     .panel{top:auto;bottom:0;right:0;transform:none;width:100%;border-radius:22px 22px 0 0;max-height:86vh;animation:sh .22s ease}
     @keyframes sh{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
   }
-
+ 
   /* modal */
   .ov{position:fixed;inset:0;z-index:50;background:rgba(40,8,12,.4);display:none;align-items:center;justify-content:center;padding:16px}
   .ov.on{display:flex}
@@ -142,7 +142,7 @@
   .up{border:2px dashed var(--line);border-radius:14px;padding:18px;text-align:center;color:var(--mut);font-size:14px}
   .ok{display:none;text-align:center;padding:30px 10px}
   .ok .c{width:66px;height:66px;border-radius:50%;background:rgba(225,29,46,.1);color:var(--yel);display:grid;place-items:center;margin:0 auto 12px;font-size:32px}
-
+ 
   footer{border-top:1px solid var(--line);color:var(--mut);font-size:13px;padding:20px 0}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   .fab{display:none}
@@ -156,7 +156,7 @@
     .sgo{padding:0 16px}
     .fab{display:block;position:fixed;bottom:18px;left:18px;z-index:30;background:var(--red);color:#fff;border:0;border-radius:999px;padding:12px 20px;font-weight:900;box-shadow:0 10px 30px rgba(200,16,46,.35)}
   }
-
+ 
   /* ===== side decorations ===== */
   .deco{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
   .deco .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(200,16,46,.18) 1.2px,transparent 1.3px);background-size:22px 22px;
@@ -173,7 +173,7 @@
   @keyframes bob{50%{transform:translateY(-14px)}}
   @media (max-width:1250px){.deco .city,.deco .pin{display:none}}
   @media (max-width:700px){.deco .dots{opacity:.5}}
-
+ 
   /* promo banner */
   .promo{position:relative;overflow:hidden;margin-top:16px;border-radius:22px;background:linear-gradient(120deg,#c8102e,#e11d2e 55%,#ff4d5e);color:#fff;padding:20px 22px;display:flex;align-items:center;gap:18px;box-shadow:0 18px 40px rgba(200,16,46,.22)}
   .promo::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.18) 1.2px,transparent 1.3px);background-size:16px 16px;-webkit-mask-image:linear-gradient(90deg,transparent 40%,#000);mask-image:linear-gradient(90deg,transparent 40%,#000)}
@@ -186,7 +186,7 @@
   .promo svg.house{width:130px;height:auto;flex:none;margin-inline-start:auto}
   @media (max-width:640px){.promo{flex-wrap:wrap;padding:14px 16px;gap:8px}.promo p{display:none}.promo .pb{padding:9px}.promo svg.house{display:none}.promo .pb{margin:6px 0 0;width:100%}}
   .hb.on~.promo,.promo.hide{display:none}
-
+ 
   /* card shine */
   .ad{position:relative;overflow:hidden}
   .ad::after{content:"";position:absolute;top:0;bottom:0;width:60px;right:-90px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-20deg);transition:none;pointer-events:none}
@@ -194,7 +194,7 @@
   .ad .th{box-shadow:0 6px 16px rgba(0,0,0,.08)}
   .sbox{box-shadow:0 8px 24px rgba(200,16,46,.06)}
   header{background:rgba(255,255,255,.8)!important;backdrop-filter:blur(14px)!important}
-
+ 
   /* ===== HERO SLIDESHOW ===== */
   header{position:fixed!important;top:0;inset-inline:0;border-top:0!important;transition:background .35s,box-shadow .35s,border-color .35s}
   header.clear{background:transparent!important;backdrop-filter:none!important;border-bottom-color:transparent}
@@ -223,7 +223,7 @@
   .hcap .cap{display:flex;align-items:center;gap:6px;transition:opacity .4s}
   main.wrap{position:relative;z-index:2}
   .deco .city,.deco .pin{display:none!important}
-
+ 
   /* ===== SAVED ===== */
   .savbtn{position:relative;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--sur);border-radius:12px;padding:8px 12px;font-size:13.5px;font-weight:700;color:var(--ink)}
   .savbtn svg{width:19px;height:19px;color:#e11d2e}
@@ -244,7 +244,7 @@
   .md .savebig{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:8px;border:1.5px solid #f2b8be;background:#fff;color:#c8102e;border-radius:14px;padding:11px;font-weight:900;font-size:14.5px}
   .md .savebig.on{background:#fff2f3}
   .md .savebig svg{width:18px;height:18px}.md .savebig.on svg{fill:currentColor}
-
+ 
   .drw{position:fixed;inset:0;z-index:60;display:none}
   .drw.on{display:block}
   .drw .dim{position:absolute;inset:0;background:rgba(40,8,12,.4);animation:fade .25s}
@@ -286,7 +286,7 @@
 <div class="deco"><div class="dots"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
 <div class="city r"><svg viewBox="0 0 320 420" fill="none" stroke="#e11d2e" stroke-width="2" stroke-linejoin="round"><g opacity=".22"><path d="M20 420V240h60v180M80 420V160h70v260M150 420V280h50v140M200 420V200l50-40 50 40v220"/><path d="M95 180h40M95 210h40M95 240h40M95 270h40M95 300h40M95 330h40M215 230h20M255 230h20M215 270h20M255 270h20M215 310h20M255 310h20M35 260h30M35 290h30M35 320h30M160 300h30M160 330h30"/><path d="M0 420h320" stroke-width="3"/></g><circle cx="255" cy="95" r="22" fill="#e11d2e" opacity=".12" stroke="none"/></svg></div><div class="city l"><svg viewBox="0 0 320 420" fill="none" stroke="#e11d2e" stroke-width="2" stroke-linejoin="round"><g opacity=".22"><path d="M20 420V240h60v180M80 420V160h70v260M150 420V280h50v140M200 420V200l50-40 50 40v220"/><path d="M95 180h40M95 210h40M95 240h40M95 270h40M95 300h40M95 330h40M215 230h20M255 230h20M215 270h20M255 270h20M215 310h20M255 310h20M35 260h30M35 290h30M35 320h30M160 300h30M160 330h30"/><path d="M0 420h320" stroke-width="3"/></g><circle cx="255" cy="95" r="22" fill="#e11d2e" opacity=".12" stroke="none"/></svg></div>
 <span class="pin" style="top:28%;right:4%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="pin" style="top:58%;left:5%;animation-delay:-2s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="pin" style="top:18%;left:9%;animation-delay:-4s;opacity:.3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span></div>
-
+ 
 <header class="clear" id="hdr"><div class="wrap hd">
   <div class="logo">زمینم <span>دات</span> کام</div>
   <div class="locs">
@@ -296,7 +296,7 @@
   <button class="savbtn" id="savBtn" onclick="openSaved()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span>ذخیره‌ها</span><i class="n" id="savN">۰</i></button>
   <button class="post" onclick="openPost()">+ ثبت آگهی رایگان</button>
 </div></header>
-
+ 
 <section class="hero" id="hero">
   <div class="hs on" data-k="0"></div><div class="hs" data-k="1"></div><div class="hs" data-k="2"></div><div class="hs" data-k="3"></div>
   <div class="hin"><div class="wrap">
@@ -312,7 +312,7 @@
 </section>
 <main class="wrap">
   <div class="cats" id="cats"></div>
-
+ 
   <div class="hb" id="hb"></div>
   <div class="promo" id="promo">
     <div><h3>خونه‌ی محله‌ی خودت رو پیدا کن</h3><p>آگهی‌های تأییدشده با مشاوره‌ی مستقیم مشاوران زمینم</p>
@@ -320,14 +320,14 @@
     <svg class="house" viewBox="0 0 140 110"><path d="M10 55 70 10l60 45" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="25" y="50" width="90" height="55" rx="6" fill="rgba(255,255,255,.18)" stroke="#fff" stroke-width="4"/><rect x="60" y="70" width="20" height="35" rx="3" fill="#fff"/><rect x="35" y="62" width="16" height="14" rx="2" fill="#fff" opacity=".8"/><rect x="89" y="62" width="16" height="14" rx="2" fill="#fff" opacity=".8"/></svg>
     <button class="pb" onclick="openPost()">+ ثبت آگهی رایگان</button>
   </div>
-
+ 
   <div class="head"><h2 id="ttl">جدیدترین آگهی‌ها</h2><span id="count"></span></div>
   <div class="list" id="list"></div>
 </main>
-
+ 
 <footer><div class="wrap"><span>© زمینم دات کام</span><span>طراحی: AR Technology</span></div></footer>
 <button class="fab" onclick="openPost()">+ ثبت آگهی</button>
-
+ 
 <!-- neighborhood picker -->
 <div class="pk" id="pk"><div class="dim" onclick="closePk()"></div>
   <div class="panel">
@@ -337,10 +337,10 @@
     <div class="hgrid" id="hgrid"></div>
   </div>
 </div>
-
+ 
 <!-- detail -->
 <div class="ov" id="detail"><div class="md" id="dBox"></div></div>
-
+ 
 <!-- post -->
 <div class="ov" id="postOv"><div class="md"><div class="pad">
   <div class="ph" style="margin-bottom:12px"><b>ثبت آگهی رایگان</b><button class="x" onclick="closeOv('postOv')"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
@@ -355,7 +355,7 @@
   </form>
   <div class="ok" id="ok"><div class="c">✓</div><b style="font-size:18px">آگهی شما ثبت شد</b><p style="color:var(--mut);margin-top:4px">پس از تأیید مدیر سایت منتشر می‌شود.</p></div>
 </div></div></div>
-
+ 
 <!-- saved drawer -->
 <div class="drw" id="drw"><div class="dim" onclick="closeSaved()"></div>
   <aside class="pnl">
@@ -365,9 +365,15 @@
   </aside>
 </div>
 <div class="toast2" id="toast2"></div>
-
+ 
 <script>
+/* عکس‌ها: villa1 تا villa4 — هر پسوندی قبول است (jpg / jpeg / png / webp) */
 const IMGS=["villa1.jpg","villa2.jpg","villa3.jpg","villa4.jpg"];
+const EXTS=["jpg","jpeg","JPG","JPEG","png","webp"];
+function findImg(k){const base=IMGS[k].replace(/\.[^.]+$/,"");return new Promise(res=>{let j=0;(function t(){if(j>=EXTS.length)return res(IMGS[k]);const u=base+"."+EXTS[j++],im=new Image();im.onload=()=>res(u);im.onerror=t;im.src=u})()})}
+Promise.all(IMGS.map((_,k)=>findImg(k))).then(L=>{L.forEach((u,k)=>IMGS[k]=u);
+  document.querySelectorAll(".hs").forEach((el,k)=>el.style.backgroundImage=`url(${IMGS[k]})`);
+  if(typeof render==="function")render();});
 const CAPS=["ویلای مدرن · شهرک امید","ویلای استخردار · محله‌ی نور","خانه‌ی ویلایی · محله‌ی گلستان","ویلای مینیمال · محله‌ی بهار"];
 const REGIONS={"منطقه ۱":["محله‌ی گلستان","محله‌ی بهار","محله‌ی مرکزی"],"منطقه ۲":["شهرک امید","محله‌ی باغ","محله‌ی نور"]};
 /* emoji, short description, tags, gradient */
@@ -399,7 +405,7 @@ const tName=t=>(TYPES.find(x=>x[0]===t)||[])[1];
 const regionOf=h=>Object.keys(REGIONS).find(r=>REGIONS[r].includes(h));
 const CAM=`<svg class="i" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>`;
 const X=`<svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
-
+ 
 function pic(c,k,id){
   const tree=k==="land"||k==="villa",g="g"+id;
   return `<svg class="pic" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
@@ -412,7 +418,7 @@ function pic(c,k,id){
 }
 function photo(a,i){return a[1]==="land"?pic(a[7],a[1],"p"+i):`<img src="${IMGS[i%4]}" alt="" loading="lazy">`}
 function hoodsFor(r){return r==="همه"?Object.values(REGIONS).flat():REGIONS[r]}
-
+ 
 /* ---------- picker ---------- */
 function openPk(focus){
   st.pkRegion=st.region;$("#hq").value="";
@@ -442,7 +448,7 @@ function drawPk(){
 }
 $("#hq").addEventListener("input",drawPk);
 document.querySelectorAll(".locbtn").forEach(b=>b.onclick=()=>openPk(b.dataset.open));
-
+ 
 /* ---------- list ---------- */
 function render(){
   $("#rLbl").textContent=st.region;
@@ -476,7 +482,7 @@ function render(){
   $("#list").querySelectorAll(".ad").forEach(d=>d.onclick=e=>{if(e.target.closest(".heart"))return;openAd(+d.dataset.i)});
   $("#list").querySelectorAll(".heart").forEach(h=>h.onclick=()=>toggleSave(+h.dataset.h));
 }
-
+ 
 function openAd(i){
   const a=ADS[i],ag=AGENTS[a[6]];
   $("#dBox").innerHTML=`<div class="img">${photo(a,i)}<button class="x" onclick="closeOv('detail')">${X}</button></div>
@@ -502,7 +508,7 @@ $("#fHood").innerHTML=Object.values(REGIONS).flat().map(h=>`<option>${h}</option
 $("#fAgent").innerHTML=AGENTS.map(a=>`<option>${a}</option>`).join("");
 $("#pf").onsubmit=e=>{e.preventDefault();$("#pf").style.display="none";$("#ok").style.display="block"};
 $("#q").addEventListener("input",render);
-
+ 
 /* ===== hero slideshow ===== */
 (function(){
   const S=[...document.querySelectorAll(".hs")];S.forEach((el,k)=>el.style.backgroundImage=`url(${IMGS[k]})`);
@@ -516,7 +522,7 @@ $("#q").addEventListener("input",render);
   go(0);
 })();
 addEventListener("scroll",()=>$("#hdr").classList.toggle("clear",scrollY<innerHeight*.55),{passive:true});
-
+ 
 /* ===== saved listings (kept on this device) ===== */
 var saved=new Set();
 try{saved=new Set(JSON.parse(localStorage.getItem("zaminam_saved")||"[]"))}catch(_){}
@@ -544,3 +550,4 @@ updBadge();render();
 </script>
 </body>
 </html>
+ 
