@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#c8102e">
+<title>زمینم دات کام | طرح گالری</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#faf7f7;--sur:#ffffff;--sur2:#f6eeee;--line:#efe3e3;--ink:#1d1415;--mut:#7d6b6d;--yel:#e11d2e;--navy:#c8102e;--red:linear-gradient(135deg,#ef3340,#c8102e 60%,#9e0b22)}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{font-family:Vazirmatn,Tahoma,sans-serif;background:radial-gradient(900px 360px at 90% -10%,rgba(225,29,46,.10),transparent 65%),var(--bg);background-attachment:fixed;color:var(--ink);line-height:1.7}
+  button{font-family:inherit;cursor:pointer;color:inherit}
+  svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .wrap{width:min(1100px,100%);margin-inline:auto;padding-inline:16px}
+
+  /* header */
+  header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .hd{display:flex;align-items:center;gap:12px;padding-block:12px}
+  .logo{font-weight:900;font-size:22px;white-space:nowrap;color:#1d1415}
+  .logo span{color:#e11d2e!important}
+  .logo span{color:var(--yel)}
+  .locs{display:flex;gap:8px;flex:1}
+  .locbtn{display:flex;align-items:center;gap:6px;background:var(--sur);border:1px solid var(--line);border-radius:12px;padding:7px 12px;font-size:13px;color:var(--mut);transition:.2s}
+  .locbtn b{color:var(--ink);font-size:14px}
+  .locbtn:hover,.locbtn.open{border-color:var(--yel)}
+  .locbtn svg{width:16px;height:16px}
+  .locbtn .pin{color:var(--yel)}
+  .post{background:var(--red);color:#fff;box-shadow:0 8px 22px rgba(200,16,46,.28);border:0;border-radius:12px;padding:10px 16px;font-weight:900;font-size:14px;white-space:nowrap}
+  .post:hover{filter:brightness(1.05)}
+
+  /* search */
+  .sbar{display:flex;gap:8px;margin-top:18px}
+  .sbox{flex:1;min-width:0;display:flex;align-items:center;gap:10px;background:var(--sur);border:1px solid var(--line);border-radius:14px;padding:0 14px}
+  .sbox:focus-within{border-color:var(--yel)}
+  .sbox svg{color:var(--mut)}
+  .sbox input{flex:1;min-width:0;width:100%;border:0;background:transparent;color:var(--ink);font-family:inherit;font-size:15px;padding:13px 0;outline:none}
+  .sbox input::placeholder{color:var(--mut)}
+  .sgo{background:var(--red);color:#fff;box-shadow:0 8px 22px rgba(200,16,46,.25);border:0;border-radius:14px;padding:0 22px;font-weight:900}
+  .cats{display:flex;gap:8px;overflow-x:auto;padding:12px 0 4px;scrollbar-width:none}
+  .cats::-webkit-scrollbar{display:none}
+  .cat{flex:none;border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 16px;font-size:14px;color:var(--mut)}
+  .cat.on{background:var(--red);border-color:transparent;color:#fff;font-weight:700}
+
+  /* selected neighborhood banner */
+  .hb{display:none;margin-top:14px;border-radius:18px;padding:16px 18px;position:relative;overflow:hidden;align-items:center;gap:14px}
+  .hb.on{display:flex}
+  .hb .em{font-size:38px;width:62px;height:62px;border-radius:16px;background:rgba(255,255,255,.12);display:grid;place-items:center;flex:none}
+  .hb h2{font-size:20px;font-weight:900;line-height:1.4}
+  .hb p{font-size:13.5px;opacity:.85}
+  .hb .tags{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+  .hb .tags span{background:rgba(0,0,0,.25);border-radius:8px;padding:1px 9px;font-size:12px}
+  .hb .clr{margin-inline-start:auto;align-self:flex-start;background:rgba(0,0,0,.3);border:0;border-radius:10px;padding:5px 10px;font-size:13px;color:#fff;white-space:nowrap}
+
+  /* list */
+  .head{display:flex;justify-content:space-between;align-items:center;margin:18px 0 10px}
+  .head h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px}
+  .head h2::before{content:"";width:5px;height:22px;border-radius:4px;background:var(--red)}
+  .head span{color:var(--mut);font-size:13px}
+  .list{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-bottom:60px}
+  @media (max-width:820px){.list{grid-template-columns:1fr}}
+  .ad{display:flex;gap:14px;background:var(--sur);border:1px solid var(--line);border-radius:18px;padding:12px;cursor:pointer;transition:.2s}
+  .ad:hover{border-color:#f2b8be;box-shadow:0 14px 30px rgba(200,16,46,.10);transform:translateY(-2px)}
+  .th{position:relative;width:132px;aspect-ratio:1;flex:none;border-radius:14px;overflow:hidden}
+  .th svg.pic{width:100%;height:100%;display:block}
+  .cnt{position:absolute;bottom:7px;right:7px;display:flex;align-items:center;gap:3px;background:rgba(0,0,0,.6);color:#fff;border-radius:8px;padding:1px 7px;font-size:12px}
+  .cnt svg{width:14px;height:14px}
+  .vip{position:absolute;top:7px;right:7px;background:var(--red);color:#fff;font-size:11.5px;font-weight:900;border-radius:7px;padding:1px 8px}
+  .ad .txt{flex:1;min-width:0;display:flex;flex-direction:column}
+  .ad .ty{font-size:12px;color:#c8102e;font-weight:700}
+  .ad h3{font-size:15.5px;font-weight:700;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .ad .m{font-size:13px;color:var(--mut);margin-top:2px}
+  .ad .pr{margin-top:auto;font-weight:900;font-size:15px;color:#c8102e}
+  .empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:50px 0}
+
+  /* neighborhood picker */
+  .pk{position:fixed;inset:0;z-index:40;display:none}
+  .pk.on{display:block}
+  .pk .dim{position:absolute;inset:0;background:rgba(40,8,12,.35)}
+  .panel{position:absolute;top:70px;right:50%;transform:translateX(50%);width:min(760px,calc(100% - 24px));max-height:calc(100vh - 90px);overflow:auto;background:var(--sur);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 30px 80px rgba(120,10,25,.2);animation:pop .2s ease}
+  @keyframes pop{from{opacity:0;transform:translateX(50%) translateY(-8px)}to{opacity:1;transform:translateX(50%)}}
+  .ph{display:flex;justify-content:space-between;align-items:center}
+  .ph b{font-size:18px}
+  .x{border:0;background:var(--sur2);width:36px;height:36px;border-radius:10px;display:grid;place-items:center}
+  .rtabs{display:flex;gap:6px;background:var(--bg);border-radius:14px;padding:4px;margin-top:14px}
+  .rtabs button{flex:1;border:0;background:none;border-radius:10px;padding:8px;font-size:14px;color:var(--mut)}
+  .rtabs button.on{background:var(--sur2);color:var(--ink);font-weight:700}
+  .hsearch{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:0 12px;margin-top:10px}
+  .hsearch input{flex:1;border:0;background:none;color:var(--ink);font-family:inherit;font-size:14px;padding:10px 0;outline:none}
+  .hsearch svg{color:var(--mut)}
+  .hgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+  @media (max-width:640px){.hgrid{grid-template-columns:1fr 1fr}}
+  .hc{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;border:2px solid var(--line);background:var(--sur);transition:.2s;text-align:right}
+  .hc:hover{transform:translateY(-2px)}
+  .hc.on{border-color:var(--yel)}
+  .agent{background:var(--bg)}
+  .hc .top{height:74px;display:flex;align-items:flex-end;justify-content:space-between;padding:8px 10px}
+  .hc .top .e{font-size:30px;line-height:1}
+  .hc .top .rg{font-size:11px;background:rgba(0,0,0,.3);border-radius:6px;padding:0 7px;color:#fff}
+  .hc .bd{padding:8px 10px 10px}
+  .hc b{display:block;font-size:15px}
+  .hc small{display:block;color:var(--mut);font-size:12px;line-height:1.6}
+  .hc .n{display:inline-block;margin-top:5px;font-size:12px;background:var(--sur2);border-radius:7px;padding:0 8px}
+  .hc .ck{position:absolute;top:8px;left:8px;width:24px;height:24px;border-radius:50%;background:#fff;color:#c8102e;display:none;place-items:center;font-weight:900;font-size:14px}
+  .hc.on .ck{display:grid}
+  .hc.all .top{background:var(--red)}
+  @media (max-width:640px){
+    .panel{top:auto;bottom:0;right:0;transform:none;width:100%;border-radius:22px 22px 0 0;max-height:86vh;animation:sh .22s ease}
+    @keyframes sh{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+  }
+
+  /* modal */
+  .ov{position:fixed;inset:0;z-index:50;background:rgba(40,8,12,.4);display:none;align-items:center;justify-content:center;padding:16px}
+  .ov.on{display:flex}
+  .md{background:var(--sur);border:1px solid var(--line);width:min(600px,100%);max-height:92vh;overflow:auto;border-radius:22px}
+  .md .img{aspect-ratio:16/10;position:relative}
+  .md .img svg{width:100%;height:100%;display:block}
+  .md .img .x{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.5);color:#fff}
+  .md .pad{padding:16px 18px 18px}
+  .md h1{font-size:19px;line-height:1.6}
+  .md .when{color:var(--mut);font-size:13.5px}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+  .facts div{background:var(--bg);border-radius:12px;padding:9px;text-align:center;font-size:12.5px;color:var(--mut)}
+  .facts b{display:block;color:var(--ink);font-size:15px}
+  .price{display:flex;justify-content:space-between;align-items:center;background:var(--bg);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--mut)}
+  .price b{color:var(--navy);font-size:17px}
+  .desc{margin-top:12px;font-size:14.5px;color:#4a3b3d}
+  header{border-top:3px solid #e11d2e}
+  .price b{color:#c8102e!important}
+  .agent{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:14px}
+  .av{width:46px;height:46px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:900;font-size:18px;flex:none}
+  .agent small{display:block;color:var(--mut)}
+  .call{display:block;text-align:center;background:var(--red);color:#fff;font-weight:900;border-radius:14px;padding:13px;margin-top:12px;text-decoration:none}
+  .note{font-size:12.5px;color:var(--mut);text-align:center;margin-top:8px}
+  .f{display:grid;gap:12px}
+  .f label{font-size:13.5px;color:var(--mut)}
+  .f input,.f select,.f textarea{width:100%;margin-top:5px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:11px 12px;color:var(--ink);font-family:inherit;font-size:15px;outline:none}
+  .f input:focus,.f select:focus,.f textarea:focus{border-color:var(--yel)}
+  .f .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .up{border:2px dashed var(--line);border-radius:14px;padding:18px;text-align:center;color:var(--mut);font-size:14px}
+  .ok{display:none;text-align:center;padding:30px 10px}
+  .ok .c{width:66px;height:66px;border-radius:50%;background:rgba(225,29,46,.1);color:var(--yel);display:grid;place-items:center;margin:0 auto 12px;font-size:32px}
+
+  footer{border-top:1px solid var(--line);color:var(--mut);font-size:13px;padding:20px 0}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .fab{display:none}
+  @media (max-width:640px){
+    .hd{flex-wrap:wrap}
+    .logo{flex:1;font-size:20px}
+    .locs{order:3;flex-basis:100%}
+    .locbtn{flex:1;justify-content:center}
+    .post{display:none}
+    .th{width:112px}
+    .sgo{padding:0 16px}
+    .fab{display:block;position:fixed;bottom:18px;left:18px;z-index:30;background:var(--red);color:#fff;border:0;border-radius:999px;padding:12px 20px;font-weight:900;box-shadow:0 10px 30px rgba(200,16,46,.35)}
+  }
+
+  /* ===== side decorations ===== */
+  .deco{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+  .deco .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(200,16,46,.18) 1.2px,transparent 1.3px);background-size:22px 22px;
+    -webkit-mask-image:linear-gradient(90deg,#000 0,transparent 22%,transparent 78%,#000 100%);mask-image:linear-gradient(90deg,#000 0,transparent 22%,transparent 78%,#000 100%)}
+  .deco .blob{position:absolute;width:420px;height:420px;border-radius:50%;filter:blur(70px);opacity:.33;animation:drift 18s ease-in-out infinite alternate}
+  .deco .b1{background:#ff4d5e;top:-120px;right:-160px}
+  .deco .b2{background:#ffb3ba;bottom:-140px;left:-160px;animation-delay:-9s}
+  .deco .b3{background:#ff8a93;top:45%;left:-220px;width:300px;height:300px;opacity:.22;animation-duration:24s}
+  @keyframes drift{to{transform:translate(60px,50px) scale(1.15)}}
+  .deco .city{position:absolute;bottom:0;width:min(22vw,320px);height:auto;opacity:.9}
+  .deco .city.r{right:0}.deco .city.l{left:0;transform:scaleX(-1)}
+  .deco .pin{position:absolute;color:#e11d2e;opacity:.5;animation:bob 6s ease-in-out infinite}
+  .deco .pin svg{width:34px;height:34px}
+  @keyframes bob{50%{transform:translateY(-14px)}}
+  @media (max-width:1250px){.deco .city,.deco .pin{display:none}}
+  @media (max-width:700px){.deco .dots{opacity:.5}}
+
+  /* promo banner */
+  .promo{position:relative;overflow:hidden;margin-top:16px;border-radius:22px;background:linear-gradient(120deg,#c8102e,#e11d2e 55%,#ff4d5e);color:#fff;padding:20px 22px;display:flex;align-items:center;gap:18px;box-shadow:0 18px 40px rgba(200,16,46,.22)}
+  .promo::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.18) 1.2px,transparent 1.3px);background-size:16px 16px;-webkit-mask-image:linear-gradient(90deg,transparent 40%,#000);mask-image:linear-gradient(90deg,transparent 40%,#000)}
+  .promo>*{position:relative}
+  .promo h3{font-size:clamp(17px,2.2vw,22px);font-weight:900;line-height:1.5}
+  .promo p{opacity:.9;font-size:14px}
+  .promo .st{display:flex;gap:18px;margin-top:8px;font-size:13px}
+  .promo .st b{display:block;font-size:20px;line-height:1.3}
+  .promo .pb{margin-inline-start:auto;background:#fff;color:#c8102e;border:0;border-radius:14px;padding:11px 18px;font-weight:900;white-space:nowrap;box-shadow:0 8px 20px rgba(0,0,0,.15)}
+  .promo svg.house{width:130px;height:auto;flex:none;margin-inline-start:auto}
+  @media (max-width:640px){.promo{flex-wrap:wrap;padding:14px 16px;gap:8px}.promo p{display:none}.promo .pb{padding:9px}.promo svg.house{display:none}.promo .pb{margin:6px 0 0;width:100%}}
+  .hb.on~.promo,.promo.hide{display:none}
+
+  /* card shine */
+  .ad{position:relative;overflow:hidden}
+  .ad::after{content:"";position:absolute;top:0;bottom:0;width:60px;right:-90px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-20deg);transition:none;pointer-events:none}
+  .ad:hover::after{right:120%;transition:right .8s ease}
+  .ad .th{box-shadow:0 6px 16px rgba(0,0,0,.08)}
+  .sbox{box-shadow:0 8px 24px rgba(200,16,46,.06)}
+  header{background:rgba(255,255,255,.8)!important;backdrop-filter:blur(14px)!important}
+
+  /* ===== HERO SLIDESHOW ===== */
+  header{position:fixed!important;top:0;inset-inline:0;border-top:0!important;transition:background .35s,box-shadow .35s,border-color .35s}
+  header.clear{background:transparent!important;backdrop-filter:none!important;border-bottom-color:transparent}
+  header.clear .logo{color:#fff}
+  header.clear .locbtn{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:rgba(255,255,255,.8);backdrop-filter:blur(8px)}
+  header.clear .locbtn b{color:#fff}
+  header.clear .locbtn .pin{color:#fff}
+  .hero{position:relative;height:min(86vh,760px);min-height:560px;overflow:hidden;color:#fff;background:#111}
+  .hs{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.08);transition:opacity 1.4s ease}
+  .hs.on{opacity:1;animation:kenb 6.5s ease-out forwards}
+  @keyframes kenb{from{transform:scale(1.08)}to{transform:scale(1.0)}}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,6,8,.55) 0%,rgba(10,6,8,.15) 35%,rgba(10,6,8,.35) 65%,rgba(10,6,8,.82) 100%)}
+  .hin{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:70px}
+  .hin .tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:4px 14px;width:max-content}
+  .hin .tag i{width:7px;height:7px;border-radius:50%;background:#ff4d5e;box-shadow:0 0 10px #ff4d5e}
+  .hin h1{font-size:clamp(30px,5.2vw,58px);font-weight:900;line-height:1.3;margin-top:12px;text-shadow:0 4px 30px rgba(0,0,0,.35)}
+  .hin h1 span{color:#ff6b77}
+  .hin p.lead{opacity:.9;margin-top:6px;font-size:clamp(14px,1.6vw,17px);max-width:560px}
+  .hin .sbar{margin-top:22px;background:rgba(255,255,255,.14);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:8px;max-width:760px}
+  .hin .sbox{background:#fff;border:0;box-shadow:none}
+  .hcap{position:absolute;bottom:26px;left:20px;right:20px;z-index:3;display:flex;justify-content:space-between;align-items:center;font-size:13px;opacity:.9}
+  .dots{display:flex;gap:8px}
+  .dots button{width:30px;height:4px;border-radius:4px;border:0;background:rgba(255,255,255,.35);padding:0;overflow:hidden;position:relative}
+  .dots button.on::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:right;animation:fill 5s linear forwards}
+  @keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .hcap .cap{display:flex;align-items:center;gap:6px;transition:opacity .4s}
+  main.wrap{position:relative;z-index:2}
+  .deco .city,.deco .pin{display:none!important}
+
+  /* ===== SAVED ===== */
+  .savbtn{position:relative;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--sur);border-radius:12px;padding:8px 12px;font-size:13.5px;font-weight:700;color:var(--ink)}
+  .savbtn svg{width:19px;height:19px;color:#e11d2e}
+  .savbtn .n{position:absolute;top:-7px;left:-7px;min-width:20px;height:20px;border-radius:10px;background:#e11d2e;color:#fff;font-size:11px;display:grid;place-items:center;padding:0 5px;box-shadow:0 0 0 2px #fff;transform:scale(0);transition:transform .25s}
+  .savbtn .n.on{transform:scale(1)}
+  .savbtn.bump{animation:bump .45s}
+  @keyframes bump{40%{transform:scale(1.15)}}
+  header.clear .savbtn{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:#fff;backdrop-filter:blur(8px)}
+  header.clear .savbtn svg{color:#fff}
+  .heart{position:absolute;top:8px;left:8px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.92);display:grid;place-items:center;color:#1d1415;z-index:2;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:transform .2s}
+  .heart:hover{transform:scale(1.1)}
+  .heart svg{width:18px;height:18px}
+  .heart.on{color:#e11d2e}.heart.on svg{fill:currentColor}
+  .heart.pop{animation:bump .4s}
+  .th img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+  .ad:hover .th img{transform:scale(1.07)}
+  .md .img img{width:100%;height:100%;object-fit:cover;display:block}
+  .md .savebig{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:8px;border:1.5px solid #f2b8be;background:#fff;color:#c8102e;border-radius:14px;padding:11px;font-weight:900;font-size:14.5px}
+  .md .savebig.on{background:#fff2f3}
+  .md .savebig svg{width:18px;height:18px}.md .savebig.on svg{fill:currentColor}
+
+  .drw{position:fixed;inset:0;z-index:60;display:none}
+  .drw.on{display:block}
+  .drw .dim{position:absolute;inset:0;background:rgba(40,8,12,.4);animation:fade .25s}
+  @keyframes fade{from{opacity:0}}
+  .drw .pnl{position:absolute;top:0;bottom:0;left:0;width:min(420px,92vw);background:var(--sur);box-shadow:20px 0 60px rgba(0,0,0,.2);display:flex;flex-direction:column;animation:slin .3s ease}
+  @keyframes slin{from{transform:translateX(-100%)}}
+  .drw .ph{padding:18px;border-bottom:1px solid var(--line)}
+  .drw .ph b{display:flex;align-items:center;gap:8px}
+  .drw .ph b svg{width:22px;height:22px;color:#e11d2e;fill:#e11d2e}
+  .drw .body{flex:1;overflow:auto;padding:14px;display:grid;gap:10px;align-content:start}
+  .si{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:8px;cursor:pointer;background:var(--sur);animation:cardin .3s ease both}
+  .si:hover{border-color:#f2b8be}
+  .si .t{width:74px;height:74px;border-radius:12px;overflow:hidden;flex:none;background:#eee}
+  .si .t img,.si .t svg{width:100%;height:100%;object-fit:cover;display:block}
+  .si .x2{margin-inline-start:auto;border:0;background:var(--sur2);width:32px;height:32px;border-radius:10px;flex:none;display:grid;place-items:center;color:var(--mut)}
+  .si b{display:block;font-size:14px;line-height:1.5}
+  .si small{color:#c8102e;font-weight:800}
+  @keyframes cardin{from{opacity:0;transform:translateY(10px)}}
+  .emp{text-align:center;color:var(--mut);padding:50px 10px}
+  .emp .ic{width:84px;height:84px;border-radius:50%;background:#fff2f3;margin:0 auto 12px;display:grid;place-items:center}
+  .emp .ic svg{width:40px;height:40px;color:#e11d2e}
+  .drw .foot{padding:14px;border-top:1px solid var(--line);display:flex;gap:8px}
+  .drw .foot button{flex:1}
+  .dbtn{border-radius:12px;padding:11px;font-weight:800;font-size:14px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+  .dbtn.r{background:var(--red);color:#fff;border-color:transparent}
+  .promo{display:none!important}
+  .toast2{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:#1d1415;color:#fff;padding:10px 18px;border-radius:14px;font-size:14px;z-index:99;opacity:0;transition:.3s;pointer-events:none;display:flex;gap:8px;align-items:center}
+  .toast2.on{opacity:1;transform:translate(-50%,0)}
+  @media (max-width:640px){
+    .hero{height:78vh;min-height:520px}
+    .hin{padding-bottom:64px}
+    .savbtn span{display:none}
+    .savbtn{padding:8px 10px}
+    .logo{flex:1}
+  }
+</style>
+</head>
+<body>
+<div class="deco"><div class="dots"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<div class="city r"><svg viewBox="0 0 320 420" fill="none" stroke="#e11d2e" stroke-width="2" stroke-linejoin="round"><g opacity=".22"><path d="M20 420V240h60v180M80 420V160h70v260M150 420V280h50v140M200 420V200l50-40 50 40v220"/><path d="M95 180h40M95 210h40M95 240h40M95 270h40M95 300h40M95 330h40M215 230h20M255 230h20M215 270h20M255 270h20M215 310h20M255 310h20M35 260h30M35 290h30M35 320h30M160 300h30M160 330h30"/><path d="M0 420h320" stroke-width="3"/></g><circle cx="255" cy="95" r="22" fill="#e11d2e" opacity=".12" stroke="none"/></svg></div><div class="city l"><svg viewBox="0 0 320 420" fill="none" stroke="#e11d2e" stroke-width="2" stroke-linejoin="round"><g opacity=".22"><path d="M20 420V240h60v180M80 420V160h70v260M150 420V280h50v140M200 420V200l50-40 50 40v220"/><path d="M95 180h40M95 210h40M95 240h40M95 270h40M95 300h40M95 330h40M215 230h20M255 230h20M215 270h20M255 270h20M215 310h20M255 310h20M35 260h30M35 290h30M35 320h30M160 300h30M160 330h30"/><path d="M0 420h320" stroke-width="3"/></g><circle cx="255" cy="95" r="22" fill="#e11d2e" opacity=".12" stroke="none"/></svg></div>
+<span class="pin" style="top:28%;right:4%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="pin" style="top:58%;left:5%;animation-delay:-2s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="pin" style="top:18%;left:9%;animation-delay:-4s;opacity:.3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span></div>
+
+<header class="clear" id="hdr"><div class="wrap hd">
+  <div class="logo">زمینم <span>دات</span> کام</div>
+  <div class="locs">
+    <button class="locbtn" data-open="region"><svg class="i pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>منطقه: <b id="rLbl">همه</b><svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+    <button class="locbtn" data-open="hood"><svg class="i pin" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg>محله: <b id="hLbl">همه</b><svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+  </div>
+  <button class="savbtn" id="savBtn" onclick="openSaved()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span>ذخیره‌ها</span><i class="n" id="savN">۰</i></button>
+  <button class="post" onclick="openPost()">+ ثبت آگهی رایگان</button>
+</div></header>
+
+<section class="hero" id="hero">
+  <div class="hs on" data-k="0"></div><div class="hs" data-k="1"></div><div class="hs" data-k="2"></div><div class="hs" data-k="3"></div>
+  <div class="hin"><div class="wrap">
+    <span class="tag"><i></i>آگهی‌های تأییدشده · ثبت رایگان</span>
+    <h1>خانه‌ی رؤیایی‌ات را<br>در <span>محله‌ی خودت</span> پیدا کن</h1>
+    <p class="lead">خرید، فروش، اجاره و رهن ملک، ویلا و زمین؛ با مشاوره‌ی مستقیم مشاوران زمینم</p>
+    <div class="sbar">
+    <label class="sbox"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" placeholder="دنبال چه ملکی هستید؟ مثلاً آپارتمان دو خواب"></label>
+    <button class="sgo" onclick="render()">جستجو</button>
+  </div>
+  </div></div>
+  <div class="hcap"><div class="wrap" style="display:flex;justify-content:space-between;align-items:center;padding:0"><span class="cap" id="cap"></span><div class="dots" id="dots"></div></div></div>
+</section>
+<main class="wrap">
+  <div class="cats" id="cats"></div>
+
+  <div class="hb" id="hb"></div>
+  <div class="promo" id="promo">
+    <div><h3>خونه‌ی محله‌ی خودت رو پیدا کن</h3><p>آگهی‌های تأییدشده با مشاوره‌ی مستقیم مشاوران زمینم</p>
+      <div class="st"><div><b>۱٬۲۴۰+</b>آگهی فعال</div><div><b>۳۸</b>محله</div><div><b>رایگان</b>ثبت آگهی</div></div></div>
+    <svg class="house" viewBox="0 0 140 110"><path d="M10 55 70 10l60 45" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="25" y="50" width="90" height="55" rx="6" fill="rgba(255,255,255,.18)" stroke="#fff" stroke-width="4"/><rect x="60" y="70" width="20" height="35" rx="3" fill="#fff"/><rect x="35" y="62" width="16" height="14" rx="2" fill="#fff" opacity=".8"/><rect x="89" y="62" width="16" height="14" rx="2" fill="#fff" opacity=".8"/></svg>
+    <button class="pb" onclick="openPost()">+ ثبت آگهی رایگان</button>
+  </div>
+
+  <div class="head"><h2 id="ttl">جدیدترین آگهی‌ها</h2><span id="count"></span></div>
+  <div class="list" id="list"></div>
+</main>
+
+<footer><div class="wrap"><span>© زمینم دات کام</span><span>طراحی: AR Technology</span></div></footer>
+<button class="fab" onclick="openPost()">+ ثبت آگهی</button>
+
+<!-- neighborhood picker -->
+<div class="pk" id="pk"><div class="dim" onclick="closePk()"></div>
+  <div class="panel">
+    <div class="ph"><b>انتخاب محله</b><button class="x" onclick="closePk()"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="rtabs" id="rtabs"></div>
+    <label class="hsearch"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="hq" placeholder="جستجوی نام محله…"></label>
+    <div class="hgrid" id="hgrid"></div>
+  </div>
+</div>
+
+<!-- detail -->
+<div class="ov" id="detail"><div class="md" id="dBox"></div></div>
+
+<!-- post -->
+<div class="ov" id="postOv"><div class="md"><div class="pad">
+  <div class="ph" style="margin-bottom:12px"><b>ثبت آگهی رایگان</b><button class="x" onclick="closeOv('postOv')"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <form class="f" id="pf">
+    <div class="up">📷 افزودن عکس‌های ملک<br><small>تا ۱۰ عکس</small></div>
+    <label>عنوان آگهی<input required placeholder="مثلاً آپارتمان ۸۵ متری دو خواب"></label>
+    <div class="two"><label>نوع آگهی<select id="fType"></select></label><label>محله<select id="fHood"></select></label></div>
+    <div class="two"><label>متراژ (متر)<input inputmode="numeric" placeholder="۸۵"></label><label>قیمت (تومان)<input inputmode="numeric" placeholder="۴٬۵۰۰٬۰۰۰٬۰۰۰"></label></div>
+    <label>مشاور شما<select id="fAgent"></select></label>
+    <label>توضیحات<textarea rows="3" placeholder="طبقه، سال ساخت، امکانات…"></textarea></label>
+    <button class="post" style="padding:13px">ارسال آگهی</button>
+  </form>
+  <div class="ok" id="ok"><div class="c">✓</div><b style="font-size:18px">آگهی شما ثبت شد</b><p style="color:var(--mut);margin-top:4px">پس از تأیید مدیر سایت منتشر می‌شود.</p></div>
+</div></div></div>
+
+<!-- saved drawer -->
+<div class="drw" id="drw"><div class="dim" onclick="closeSaved()"></div>
+  <aside class="pnl">
+    <div class="ph"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>آگهی‌های ذخیره‌شده <span id="drN" style="color:var(--mut);font-weight:500;font-size:14px"></span></b><button class="x" onclick="closeSaved()"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="body" id="drBody"></div>
+    <div class="foot" id="drFoot"><button class="dbtn o" onclick="clearSaved()">پاک کردن همه</button><button class="dbtn r" onclick="closeSaved()">ادامه‌ی جستجو</button></div>
+  </aside>
+</div>
+<div class="toast2" id="toast2"></div>
+
+<script>
+const IMGS=["villa1.jpg","villa2.jpg","villa3.jpg","villa4.jpg"];
+const CAPS=["ویلای مدرن · شهرک امید","ویلای استخردار · محله‌ی نور","خانه‌ی ویلایی · محله‌ی گلستان","ویلای مینیمال · محله‌ی بهار"];
+const REGIONS={"منطقه ۱":["محله‌ی گلستان","محله‌ی بهار","محله‌ی مرکزی"],"منطقه ۲":["شهرک امید","محله‌ی باغ","محله‌ی نور"]};
+/* emoji, short description, tags, gradient */
+const HOOD={
+ "محله‌ی گلستان":["🌳","آرام و سرسبز، مناسب خانواده",["پارک","آرام"],"#9e0b22,#e11d2e"],
+ "محله‌ی بهار":["🌸","نزدیک مدارس و مراکز خرید",["مدرسه","خرید"],"#b3122a,#f25563"],
+ "محله‌ی مرکزی":["🏙","قلب شهر با دسترسی عالی",["مترو","اداری"],"#5a1018,#c8102e"],
+ "شهرک امید":["🏡","ویلایی و نوساز",["نوساز","ویلایی"],"#d93a4a,#ff8a93"],
+ "محله‌ی باغ":["🌿","زمین و باغ با قیمت مناسب",["باغ","زمین"],"#7a0d1c,#e0404e"],
+ "محله‌ی نور":["🌊","نزدیک دریا با چشم‌انداز",["ساحل","چشم‌انداز"],"#c8102e,#ff5d6a"]
+};
+const TYPES=[["all","همه"],["sale","فروش"],["rent","اجاره"],["mortgage","رهن"],["land","زمین"],["villa","ویلا"]];
+const AGENTS=["مهندس مرادی","آقای مرادی","آقای کریمی"];
+/* title, type, hood, meters, price, time, agent, color, photos, vip */
+const ADS=[
+ ["آپارتمان ۸۵ متری دو خواب نوساز با پارکینگ","sale","محله‌ی گلستان",85,"۴٫۵ میلیارد تومان","لحظاتی پیش",0,"#5b7bd5",6,0],
+ ["ویلا لاکچری استخردار با حیاط ۳۰۰ متری","villa","شهرک امید",300,"۱۲ میلیارد تومان","۱ ساعت پیش",1,"#2f9e74",12,1],
+ ["اجاره آپارتمان ۶۰ متری تک‌خواب","rent","محله‌ی بهار",60,"ودیعه ۳۰۰ م · اجاره ۱۲ م","۲ ساعت پیش",2,"#d9843b",4,0],
+ ["زمین مسکونی ۲۰۰ متری سند تک‌برگ","land","محله‌ی باغ",200,"۳ میلیارد تومان","۳ ساعت پیش",0,"#8a6d3b",3,0],
+ ["رهن کامل واحد ۷۵ متری طبقه دوم","mortgage","محله‌ی مرکزی",75,"رهن ۸۰۰ میلیون","دیروز",1,"#7a5bd5",5,0],
+ ["آپارتمان ۱۲۰ متری سه خواب فول امکانات","sale","محله‌ی نور",120,"۶٫۸ میلیارد تومان","دیروز",2,"#3b8fd9",9,1],
+ ["ویلا دوبلکس نزدیک دریا","villa","محله‌ی نور",250,"۱۸ میلیارد تومان","۲ روز پیش",0,"#1f8a8a",14,0],
+ ["اجاره سوئیت ۴۵ متری مبله","rent","شهرک امید",45,"ودیعه ۱۰۰ م · اجاره ۸ م","۳ روز پیش",1,"#d95b6a",7,0]
+];
+const st={type:"all",region:"همه",hood:"همه",pkRegion:"همه"};
+const $=s=>document.querySelector(s);
+const fa=n=>Number(n).toLocaleString("fa-IR");
+const tName=t=>(TYPES.find(x=>x[0]===t)||[])[1];
+const regionOf=h=>Object.keys(REGIONS).find(r=>REGIONS[r].includes(h));
+const CAM=`<svg class="i" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>`;
+const X=`<svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
+
+function pic(c,k,id){
+  const tree=k==="land"||k==="villa",g="g"+id;
+  return `<svg class="pic" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+  <defs><linearGradient id="${g}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c}" stop-opacity=".35"/><stop offset="1" stop-color="${c}" stop-opacity=".12"/></linearGradient></defs>
+  <rect width="300" height="300" fill="#f3f5fa"/><rect width="300" height="300" fill="url(#${g})"/>
+  ${k==="land"?`<rect x="40" y="190" width="220" height="44" rx="6" fill="${c}" opacity=".7"/><path d="M40 190h220" stroke="#fff" stroke-width="3" stroke-dasharray="10 8" opacity=".6"/>`:
+  k==="villa"?`<path d="M50 140l100-62 100 62z" fill="${c}"/><rect x="65" y="140" width="170" height="88" fill="#eceef3"/><rect x="135" y="180" width="32" height="48" fill="${c}"/><rect x="82" y="158" width="34" height="24" fill="#ffd77a"/><rect x="185" y="158" width="34" height="24" fill="#ffd77a"/><rect x="40" y="238" width="120" height="20" rx="8" fill="#5cc8ff" opacity=".7"/>`:
+  `<rect x="90" y="55" width="120" height="175" fill="#eceef3"/><rect x="90" y="55" width="120" height="12" fill="${c}"/>${[0,1,2,3,4].map(r=>[0,1,2].map(q=>`<rect x="${104+q*34}" y="${80+r*28}" width="22" height="16" fill="${(r+q)%3?"#ffd77a":"#9fb0d8"}"/>`).join("")).join("")}<rect x="137" y="200" width="26" height="30" fill="${c}"/>`}
+  ${tree?`<circle cx="252" cy="170" r="24" fill="#3aa86b"/><rect x="248" y="188" width="8" height="40" fill="#6b4f33"/>`:""}</svg>`;
+}
+function photo(a,i){return a[1]==="land"?pic(a[7],a[1],"p"+i):`<img src="${IMGS[i%4]}" alt="" loading="lazy">`}
+function hoodsFor(r){return r==="همه"?Object.values(REGIONS).flat():REGIONS[r]}
+
+/* ---------- picker ---------- */
+function openPk(focus){
+  st.pkRegion=st.region;$("#hq").value="";
+  $(".ph b").textContent=focus==="region"?"انتخاب منطقه و محله":"انتخاب محله";
+  drawPk();$("#pk").classList.add("on");
+  document.querySelectorAll(".locbtn").forEach(b=>b.classList.toggle("open",b.dataset.open===focus));
+}
+function closePk(){$("#pk").classList.remove("on");document.querySelectorAll(".locbtn").forEach(b=>b.classList.remove("open"))}
+function drawPk(){
+  $("#rtabs").innerHTML=["همه",...Object.keys(REGIONS)].map(r=>`<button class="${st.pkRegion===r?"on":""}" data-r="${r}">${r==="همه"?"همه‌ی مناطق":r}</button>`).join("");
+  $("#rtabs").querySelectorAll("button").forEach(b=>b.onclick=()=>{st.pkRegion=b.dataset.r;drawPk()});
+  const q=$("#hq").value.trim();
+  const hs=hoodsFor(st.pkRegion).filter(h=>!q||h.includes(q));
+  const all=`<div class="hc all ${st.hood==="همه"&&st.region===st.pkRegion?"on":""}" data-h="همه"><span class="ck">✓</span><div class="top"><span class="e">🗺</span></div><div class="bd"><b>همه‌ی محله‌ها</b><small>${st.pkRegion==="همه"?"کل شهر":st.pkRegion}</small><span class="n">${fa(ADS.filter(a=>hoodsFor(st.pkRegion).includes(a[2])).length)} آگهی</span></div></div>`;
+  $("#hgrid").innerHTML=(q?"":all)+hs.map(h=>{
+    const [e,d,,g]=HOOD[h],ads=ADS.filter(a=>a[2]===h);
+    const by=[...new Set(ads.map(a=>a[1]))].map(tName).join(" · ")||"—";
+    return `<div class="hc ${st.hood===h?"on":""}" data-h="${h}"><span class="ck">✓</span>
+      <div class="top" style="background:linear-gradient(135deg,${g})"><span class="e">${e}</span><span class="rg">${regionOf(h)}</span></div>
+      <div class="bd"><b>${h.replace("محله‌ی ","")}</b><small>${d}</small><span class="n">${fa(ads.length)} آگهی · ${by}</span></div></div>`;
+  }).join("")||`<div style="grid-column:1/-1;text-align:center;color:var(--mut);padding:20px">محله‌ای پیدا نشد</div>`;
+  $("#hgrid").querySelectorAll(".hc").forEach(c=>c.onclick=()=>{
+    const h=c.dataset.h;
+    if(h==="همه"){st.region=st.pkRegion;st.hood="همه"}else{st.hood=h;st.region=st.pkRegion==="همه"?"همه":st.pkRegion}
+    closePk();render();document.querySelector(".cats").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+}
+$("#hq").addEventListener("input",drawPk);
+document.querySelectorAll(".locbtn").forEach(b=>b.onclick=()=>openPk(b.dataset.open));
+
+/* ---------- list ---------- */
+function render(){
+  $("#rLbl").textContent=st.region;
+  $("#hLbl").textContent=st.hood==="همه"?"همه":st.hood.replace("محله‌ی ","");
+  $("#cats").innerHTML=TYPES.map(t=>`<button class="cat ${st.type===t[0]?"on":""}" data-k="${t[0]}">${t[1]}</button>`).join("");
+  $("#cats").querySelectorAll(".cat").forEach(b=>b.onclick=()=>{st.type=b.dataset.k;render()});
+  /* banner */
+  const hb=$("#hb");
+  if(st.hood!=="همه"){
+    const [e,d,tags,g]=HOOD[st.hood],n=ADS.filter(a=>a[2]===st.hood).length;
+    hb.style.background=`linear-gradient(135deg,${g})`;
+    hb.innerHTML=`<div class="em">${e}</div><div><h2>${st.hood}</h2><p>${d} · ${regionOf(st.hood)}</p><div class="tags">${tags.map(t=>`<span>${t}</span>`).join("")}<span>${fa(n)} آگهی فعال</span></div></div><button class="clr" id="clr">× حذف فیلتر</button>`;
+    hb.classList.add("on");$("#clr").onclick=()=>{st.hood="همه";render()};
+  }else hb.classList.remove("on");
+  $("#promo").classList.toggle("hide",st.hood!=="همه");
+  const q=$("#q").value.trim(),hs=hoodsFor(st.region);
+  const L=ADS.map((a,i)=>[a,i]).filter(([a])=>(st.type==="all"||a[1]===st.type)&&hs.includes(a[2])&&(st.hood==="همه"||a[2]===st.hood)&&(!q||a[0].includes(q)));
+  $("#ttl").textContent=st.hood==="همه"?"جدیدترین آگهی‌ها":"آگهی‌های این محله";
+  $("#count").textContent=fa(L.length)+" آگهی";
+  $("#list").innerHTML=L.length?L.map(([a,i])=>`
+   <article class="ad" data-i="${i}">
+     <div class="th">${photo(a,i)}<button class="heart ${saved.has(i)?"on":""}" data-h="${i}" aria-label="ذخیره"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></button>${a[9]?'<span class="vip">ویژه</span>':""}<span class="cnt">${CAM}${fa(a[8])}</span></div>
+     <div class="txt">
+       <span class="ty">${tName(a[1])}</span>
+       <h3>${a[0]}</h3>
+       <div class="m">📍 ${a[2]} · ${fa(a[3])} متر</div>
+       <div class="m">${a[5]}</div>
+       <div class="pr">${a[4]}</div>
+     </div>
+   </article>`).join(""):`<div class="empty">آگهی‌ای با این فیلتر پیدا نشد</div>`;
+  $("#list").querySelectorAll(".ad").forEach(d=>d.onclick=e=>{if(e.target.closest(".heart"))return;openAd(+d.dataset.i)});
+  $("#list").querySelectorAll(".heart").forEach(h=>h.onclick=()=>toggleSave(+h.dataset.h));
+}
+
+function openAd(i){
+  const a=ADS[i],ag=AGENTS[a[6]];
+  $("#dBox").innerHTML=`<div class="img">${photo(a,i)}<button class="x" onclick="closeOv('detail')">${X}</button></div>
+  <div class="pad">
+    <h1>${a[0]}</h1><div class="when">${a[5]} · ${a[2]}</div>
+    <div class="facts"><div><b>${fa(a[3])}</b>متر</div><div><b>${tName(a[1])}</b>نوع آگهی</div><div><b>${a[2].replace("محله‌ی ","")}</b>محله</div></div>
+    <div class="price"><span>قیمت</span><b>${a[4]}</b></div>
+    <div class="desc">نورگیر عالی، دسترسی آسان به مدرسه و مراکز خرید، سند تک‌برگ. برای بازدید با مشاور هماهنگ کنید.</div>
+    <div class="agent"><div class="av">${ag[0]}</div><div><b>${ag}</b><small>مشاور این آگهی · زمینم دات کام</small></div></div>
+    <a class="call" href="tel:0">📞 تماس با مشاور</a>
+    <button class="savebig ${saved.has(i)?"on":""}" id="dSave"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span>${saved.has(i)?"ذخیره شده":"ذخیره‌ی آگهی"}</span></button>
+    <div class="note">🔒 برای حفظ حریم خصوصی، شماره‌ی مالک نمایش داده نمی‌شود.</div>
+  </div>`;
+  $("#dSave").onclick=()=>{toggleSave(i);const b=$("#dSave");b.classList.toggle("on",saved.has(i));b.querySelector("span").textContent=saved.has(i)?"ذخیره شده":"ذخیره‌ی آگهی"};
+  $("#detail").classList.add("on");
+}
+function openPost(){$("#pf").style.display="";$("#ok").style.display="none";$("#postOv").classList.add("on")}
+function closeOv(id){$("#"+id).classList.remove("on")}
+document.querySelectorAll(".ov").forEach(o=>o.addEventListener("click",e=>{if(e.target===o)o.classList.remove("on")}));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closePk();closeOv("detail");closeOv("postOv")}});
+$("#fType").innerHTML=TYPES.slice(1).map(t=>`<option>${t[1]}</option>`).join("");
+$("#fHood").innerHTML=Object.values(REGIONS).flat().map(h=>`<option>${h}</option>`).join("");
+$("#fAgent").innerHTML=AGENTS.map(a=>`<option>${a}</option>`).join("");
+$("#pf").onsubmit=e=>{e.preventDefault();$("#pf").style.display="none";$("#ok").style.display="block"};
+$("#q").addEventListener("input",render);
+
+/* ===== hero slideshow ===== */
+(function(){
+  const S=[...document.querySelectorAll(".hs")];S.forEach((el,k)=>el.style.backgroundImage=`url(${IMGS[k]})`);
+  let cur=0,tm;const dots=$("#dots");
+  dots.innerHTML=S.map((_,k)=>`<button aria-label="عکس ${k+1}"></button>`).join("");
+  function go(k){S[cur].classList.remove("on");cur=(k+S.length)%S.length;const el=S[cur];el.classList.remove("on");void el.offsetWidth;el.classList.add("on");
+    dots.querySelectorAll("button").forEach((d,j)=>{d.classList.remove("on");if(j===cur){void d.offsetWidth;d.classList.add("on")}});
+    const c=$("#cap");c.style.opacity=0;setTimeout(()=>{c.innerHTML="📍 "+CAPS[cur];c.style.opacity=.9},300);
+    clearTimeout(tm);tm=setTimeout(()=>go(cur+1),5000)}
+  dots.querySelectorAll("button").forEach((d,j)=>d.onclick=()=>go(j));
+  go(0);
+})();
+addEventListener("scroll",()=>$("#hdr").classList.toggle("clear",scrollY<innerHeight*.55),{passive:true});
+
+/* ===== saved listings (kept on this device) ===== */
+var saved=new Set();
+try{saved=new Set(JSON.parse(localStorage.getItem("zaminam_saved")||"[]"))}catch(_){}
+function persist(){try{localStorage.setItem("zaminam_saved",JSON.stringify([...saved]))}catch(_){}}
+function updBadge(){const n=$("#savN");n.textContent=fa(saved.size);n.classList.toggle("on",saved.size>0)}
+let tt2;function toast2(m){const t=$("#toast2");t.innerHTML=m;t.classList.add("on");clearTimeout(tt2);tt2=setTimeout(()=>t.classList.remove("on"),1700)}
+function toggleSave(i){
+  if(saved.has(i)){saved.delete(i);toast2("از ذخیره‌ها حذف شد")}else{saved.add(i);toast2("❤ آگهی ذخیره شد");const b=$("#savBtn");b.classList.remove("bump");void b.offsetWidth;b.classList.add("bump")}
+  persist();updBadge();
+  document.querySelectorAll(`.heart[data-h="${i}"]`).forEach(h=>{h.classList.toggle("on",saved.has(i));h.classList.remove("pop");void h.offsetWidth;h.classList.add("pop")});
+  if($("#drw").classList.contains("on"))drawSaved();
+}
+function drawSaved(){
+  const L=[...saved].filter(i=>ADS[i]);$("#drN").textContent=L.length?"("+fa(L.length)+")":"";
+  $("#drFoot").style.display=L.length?"flex":"none";
+  $("#drBody").innerHTML=L.length?L.map(i=>{const a=ADS[i];return `<div class="si" data-i="${i}"><div class="t">${photo(a,i)}</div><div><b>${a[0]}</b><div style="font-size:12.5px;color:var(--mut)">📍 ${a[2]} · ${fa(a[3])} متر</div><small>${a[4]}</small></div><button class="x2" data-r="${i}" aria-label="حذف">✕</button></div>`}).join("")
+   :`<div class="emp"><div class="ic">`+document.querySelector("#savBtn svg").outerHTML+`</div><b style="color:var(--ink);font-size:16px">هنوز آگهی‌ای ذخیره نکرده‌ای</b><p style="margin-top:4px">روی ❤ کنار هر آگهی بزن تا اینجا ذخیره شود.</p></div>`;
+  $("#drBody").querySelectorAll(".si").forEach(el=>el.onclick=e=>{if(e.target.closest(".x2")){toggleSave(+e.target.closest(".x2").dataset.r);return}closeSaved();openAd(+el.dataset.i)});
+}
+function openSaved(){drawSaved();$("#drw").classList.add("on")}
+function closeSaved(){$("#drw").classList.remove("on")}
+function clearSaved(){saved.clear();persist();updBadge();render();drawSaved();toast2("همه‌ی ذخیره‌ها پاک شد")}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSaved()});
+updBadge();render();
+</script>
+</body>
+</html>
